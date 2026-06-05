@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("USER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Customer {
+  id            String   @id @default(uuid())
+  companyName   String   @map("company_name")
+  contactPerson String   @map("contact_person")
+  email         String   @unique
+  phone         String
+  orders        Order[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("customers")
+}
+
+model Product {
+  id         String      @id @default(uuid())
+  name       String
+  sku        String      @unique
+  price      Float
+  quantity   Int         // Total available stock
+  orderItems OrderItem[]
+  inventory  Inventory?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@map("products")
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  customerId  String      @map("customer_id")
+  customer    Customer    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  totalAmount Float       @map("total_amount")
+  status      String      @default("PENDING") // PENDING, SHIPPED, COMPLETED, CANCELLED
+  orderItems  OrderItem[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String   @map("order_id")
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String   @map("product_id")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int
+  price     Float    // Historical price at order time
+  createdAt DateTime @default(now())
+
+  @@map("order_items")
+}
+
+model Inventory {
+  id            String   @id @default(uuid())
+  productId     String   @unique @map("product_id")
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  stockQuantity Int      @map("stock_quantity")
+  lastUpdated   DateTime @updatedAt @map("last_updated")
+
+  @@map("inventory")
+}
