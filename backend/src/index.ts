@@ -32,6 +32,20 @@ app.get('/health', (req, res) => {
 // Register API Routes
 app.use('/api', apiRouter);
 
+// Serve static files from the React frontend build if present
+import path from 'path';
+import fs from 'fs';
+const frontendDistPath = path.join(__dirname, '../../frontend/dist');
+if (fs.existsSync(frontendDistPath)) {
+  app.use(express.static(frontendDistPath));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendDistPath, 'index.html'));
+  });
+  console.log(`Serving React frontend statically from: ${frontendDistPath}`);
+} else {
+  console.log('Frontend build not found; running in API-only mode.');
+}
+
 // Global Error Handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error('Unhandled server error:', err);
