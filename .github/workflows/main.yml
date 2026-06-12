@@ -1,1 +1,33 @@
+name: CI Pipeline
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        env:
+          DATABASE_URL: postgresql://dummy_user:dummy_password@localhost:5432/dummy_db
+        run: npm ci
+
+      - name: Build Backend
+        env:
+          DATABASE_URL: postgresql://dummy_user:dummy_password@localhost:5432/dummy_db
+        run: npm run build:backend
+
+      - name: Build Frontend
+        run: npm run build:frontend
