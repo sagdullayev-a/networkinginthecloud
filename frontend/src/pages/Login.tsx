@@ -27,10 +27,7 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleFillDemo = () => {
-    setEmail('admin@clothingcorp.com');
-    setPassword('Password123');
-  };
+
 
   return (
     <div className="min-h-screen bg-[#070a13] flex items-center justify-center p-4 relative overflow-hidden">
@@ -54,24 +51,15 @@ const Login: React.FC = () => {
 
           {/* Core Message */}
           <div className="my-auto space-y-4">
-            <span className="px-3 py-1 bg-indigo-500/10 text-indigo-400 font-semibold text-xs rounded-full border border-indigo-500/20 inline-block uppercase tracking-wider">
-              BTEC HND Assignment Demo
-            </span>
             <h2 className="text-3xl font-extrabold text-white leading-tight">
-              Networking in the Cloud <br />
+              Enterprise Resource <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                Unit 6 Project Sandbox
+                Management System
               </span>
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-md">
-              A dynamic ERP, CRM, and WMS application demonstrating AWS Load Balancing, Auto Scaling, RDS PostgreSQL connectivity, and CI/CD pipelines.
+              A secure cloud platform for managing operations, inventory tracking, supply chain logistics, and customer relations.
             </p>
-          </div>
-
-          {/* Assignment Footer */}
-          <div className="border-t border-slate-800/80 pt-6">
-            <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Pearson BTEC Level 5 HND</div>
-            <div className="text-xs text-slate-400 font-semibold mt-1">Unit 6: Networking in the Cloud</div>
           </div>
         </div>
 
@@ -146,23 +134,7 @@ const Login: React.FC = () => {
               </button>
             </form>
 
-            {/* Teacher Sandbox Account Helper */}
-            <div className="p-4 bg-indigo-950/20 border border-indigo-900/40 rounded-xl text-xs space-y-2">
-              <div className="font-semibold text-indigo-300 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping"></span>
-                Teacher / Assessor Access Helper
-              </div>
-              <p className="text-slate-400 leading-normal">
-                Click below to auto-fill the admin credentials configured in the database seed logic.
-              </p>
-              <button
-                type="button"
-                onClick={handleFillDemo}
-                className="mt-1.5 px-3 py-1.5 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/20 hover:border-indigo-500/40 rounded-lg font-semibold transition-all cursor-pointer"
-              >
-                Auto-fill Demo Account
-              </button>
-            </div>
+
           </div>
         </div>
 
