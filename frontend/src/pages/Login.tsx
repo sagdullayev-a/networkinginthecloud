@@ -27,7 +27,10 @@ const Login: React.FC = () => {
     }
   };
 
-
+  const handleFillDemo = () => {
+    setEmail('admin@clothingcorp.com');
+    setPassword('Password123');
+  };
 
   return (
     <div className="min-h-screen bg-[#070a13] flex items-center justify-center p-4 relative overflow-hidden">
@@ -49,18 +52,6 @@ const Login: React.FC = () => {
             <span className="font-bold text-xl tracking-wider text-slate-100 uppercase">ClothingCorp</span>
           </div>
 
-          {/* Core Message */}
-          <div className="my-auto space-y-4">
-            <h2 className="text-3xl font-extrabold text-white leading-tight">
-              Enterprise Resource <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                Management System
-              </span>
-            </h2>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-md">
-              A secure cloud platform for managing operations, inventory tracking, supply chain logistics, and customer relations.
-            </p>
-          </div>
         </div>
 
         {/* Right Column: Form */}
@@ -134,7 +125,15 @@ const Login: React.FC = () => {
               </button>
             </form>
 
-
+            <div className="flex justify-center pt-2">
+              <button
+                type="button"
+                onClick={handleFillDemo}
+                className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold transition-all cursor-pointer hover:underline"
+              >
+                Auto-fill Demo Account
+              </button>
+            </div>
           </div>
         </div>
 
