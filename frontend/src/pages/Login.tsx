@@ -44,7 +44,7 @@ const Login: React.FC = () => {
         {/* Left Column: Image & Assignment Banner */}
         <div 
           className="hidden md:flex flex-col justify-between p-12 relative bg-cover bg-center"
-          style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(7, 10, 19, 0.95)), url("/login_bg.png")' }}
+          style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(7, 10, 19, 0.95)), url("/login_bg_v2.png")' }}
         >
           {/* Logo */}
           <div className="flex items-center gap-2.5 text-indigo-400">
