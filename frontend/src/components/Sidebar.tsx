@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
     { to: '/products', label: 'Products (WMS)', icon: Package },
     { to: '/orders', label: 'To`g`irladim Ustoz', icon: FileSpreadsheet },
     { to: '/inventory', label: 'Inventory Stock', icon: Warehouse },
-    { to: '/profile', label: 'My Profile', icon: User },
+    { to: '/profile', label: 'My Profile Test', icon: User },
   ];
 
   return (
