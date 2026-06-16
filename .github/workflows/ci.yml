@@ -1,35 +1,63 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - main
+push:
+branches:
+- main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+```
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
 
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
+  - name: Setup Node.js 20
+    uses: actions/setup-node@v4
+    with:
+      node-version: 20
+      cache: npm
 
-      - name: Install dependencies
-        # Provide a dummy DATABASE_URL for Prisma generate step during installation if needed,
-        # ensuring the postinstall command completes successfully.
-        env:
-          DATABASE_URL: postgresql://dummy_user:dummy_password@localhost:5432/dummy_db
-        run: npm ci
+  - name: Install dependencies
+    env:
+      DATABASE_URL: postgresql://dummy_user:dummy_password@localhost:5432/dummy_db
+    run: npm ci
 
-      - name: Build Backend
-        env:
-          DATABASE_URL: postgresql://dummy_user:dummy_password@localhost:5432/dummy_db
-        run: npm run build:backend
+  - name: Build Backend
+    env:
+      DATABASE_URL: postgresql://dummy_user:dummy_password@localhost:5432/dummy_db
+    run: npm run build:backend
 
-      - name: Build Frontend
-        run: npm run build:frontend
+  - name: Build Frontend
+    run: npm run build:frontend
+```
+
+deploy:
+needs: build
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Deploy to EC2
+    uses: appleboy/ssh-action@v1.0.3
+    with:
+      host: ${{ secrets.EC2_HOST }}
+      username: ${{ secrets.EC2_USER }}
+      key: ${{ secrets.EC2_SSH_KEY }}
+      script: |
+        cd ~/networkinginthecloud
+
+        git pull origin main
+
+        cd frontend
+
+        npm install
+        npm run build
+
+        sudo rm -rf /usr/share/nginx/html/*
+        sudo cp -r dist/* /usr/share/nginx/html/
+
+        sudo systemctl restart nginx
+```
