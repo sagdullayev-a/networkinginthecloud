@@ -125,7 +125,7 @@ const Products: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <Package className="w-7 h-7 text-indigo-400" />
-            REMODULE
+            Inventory
           </h2>
           <p className="text-slate-400 text-sm mt-1">Manage physical inventory SKUs, billing rates, and specifications.</p>
         </div>
