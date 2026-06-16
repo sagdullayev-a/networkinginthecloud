@@ -17,9 +17,9 @@ const Sidebar: React.FC = () => {
 
   const links = [
     { to: '/', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/customers', label: 'To`girladim Ustoz', icon: Users },
+    { to: '/customers', label: 'Customers (CRM)', icon: Users },
     { to: '/products', label: 'Products (WMS)', icon: Package },
-    { to: '/orders', label: 'REMODULE', icon: FileSpreadsheet },
+    { to: '/orders', label: 'To`girladim Ustoz', icon: FileSpreadsheet },
     { to: '/inventory', label: 'Inventory Stock', icon: Warehouse },
     { to: '/profile', label: 'My Profile', icon: User },
   ];
