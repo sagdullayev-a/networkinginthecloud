@@ -184,7 +184,7 @@ const Orders: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <FileSpreadsheet className="w-7 h-7 text-indigo-400" />
-            Billing & Remodule
+            Billing & Orders (ERP)
           </h2>
           <p className="text-slate-400 text-sm mt-1">Record purchases, generate invoice values, and fulfill shipment states.</p>
         </div>

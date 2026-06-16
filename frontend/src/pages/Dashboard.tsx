@@ -227,7 +227,7 @@ const Dashboard: React.FC = () => {
           <div className="p-5 border-b border-slate-800 flex items-center justify-between">
             <h3 className="font-bold text-white text-sm flex items-center gap-2">
               <Clock className="w-4 h-4 text-indigo-400" />
-              Recent Orders (Remodule Activity)
+              Recent Orders (ERP Activity)
             </h3>
             <Link to="/orders" className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1">
               Manage Orders
