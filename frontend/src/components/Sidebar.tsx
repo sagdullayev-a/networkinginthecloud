@@ -19,7 +19,7 @@ const Sidebar: React.FC = () => {
     { to: '/', label: 'Dashboard', icon: LayoutDashboard },
     { to: '/customers', label: 'Customers (CRM)', icon: Users },
     { to: '/products', label: 'Products (WMS)', icon: Package },
-    { to: '/orders', label: 'To`g`irladim Ustoz', icon: FileSpreadsheet },
+    { to: '/orders', label: 'Orders (OMS)', icon: FileSpreadsheet },
     { to: '/inventory', label: 'Inventory Stock', icon: Warehouse },
     { to: '/profile', label: 'My Profile Test', icon: User },
   ];
